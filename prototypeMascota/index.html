@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ahorcado</title>
+
+    <script>
+    /*
+        var perro = {
+            agilidad : 50,
+            fuerza : 100,
+            limpieza : false,
+            longevidad : 14,
+            amor : true,
+            voz : function(){
+                alert("Guau!");
+            }
+        };
+
+        perro.voz();
+    */
+    //Cuando es un Objeto Maestro o Clase empezar la variable con Mayúscula, una clase es :  Objeto maestro, del que se derivan otros objetos
+    //Clase :  definición del objeto
+    var nombre = "Frisco";
+    var Mascota = function(n, v){
+        this.nombre = n;
+        this.voz = v;
+    }
+
+    Mascota.prototype.hablar = function(){
+        alert(this.nombre + " Dice: " + this.voz);
+    };
+
+    var perro = new Mascota("roco", "Guau!");
+    var gato = new Mascota("Misufu", "Son mis esclavos");
+
+    perro.hablar();
+    gato.hablar();
+
+    </script>
+</head>
+<body>
+    <h1>Perros y Gatos</h1>
+</body>
+</html>
