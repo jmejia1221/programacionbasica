@@ -19,23 +19,26 @@
 
 		perro.voz();
 	*/
-	var nombre = "Frisco"; // Variable Global
-	//Cuando es un Objeto Maestro o Clase empezar la variable con Mayúscula, una clase es :  Objeto maestro, del que se derivan otros objetos
-	//Clase :  definición del objeto
-	var Mascota = function(n, v){
-		this.nombre = n;
-		this.voz = v;
+
+
+	/*Prueba*/
+
+	var Saludo = function(n, h){ // Esto es una clase
+		this.nombre = n,
+		this.hablar = h
 	}
 
-	Mascota.prototype.hablar = function(){
-		alert(this.nombre + " Dice: " + this.voz);
-	};
+	Saludo.prototype.hola = function(){ // Con prototype puedo acceder a los objetos de la clase
+		alert(this.nombre + " Dice : " + this.hablar);
+	}
 
-	var perro = new Mascota("roco", "Guau!");
-	var gato = new Mascota("Misufu", "Son mis esclavos");
+	var maquina = new Saludo("Maquina", "Hola, Soy una máquina"); // Instancia
+	var hombre = new Saludo("Humano", "Hola, soy un humano"); // Instancia
 
-	perro.hablar();
-	gato.hablar();
+	
+	maquina.hola();
+	hombre.hola();	
+
 
 	</script>
 </head>
