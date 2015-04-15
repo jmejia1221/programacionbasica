@@ -1,5 +1,5 @@
 var palabra = "Tamarindo";
-var hombre; // Variable Global
+var hombre, l, espacio; // Variables Global
 
 
 //Declaración de la clase ahorcado
@@ -108,13 +108,74 @@ function iniciar(){
 
 	var canvas = document.getElementById("c");
 
+	l = document.getElementById("letra");
+	var b = document.getElementById("boton");
+
 	canvas.width = 500;
 	canvas.height = 400;
 	var contexto = canvas.getContext("2d"); // Esta variable solo funciona dentro esta función
 	hombre = new Ahorcado(contexto);
-	hombre.trazar();
-	hombre.trazar();
-	hombre.trazar();
-	hombre.trazar();
-	hombre.trazar();
+
+	//toUpperCase(); convierte texto a mayúscula
+	palabra = palabra.toUpperCase();
+
+	// Declaro un array con n espacios de acuerdo al largo de la palabra
+	espacio = new Array(palabra.length);
+	
+	// Agregamos una función que se dispare al dar click al botón
+
+	b.addEventListener("click", agregarLetra);
+
+	mostrarPista(espacio);
+
 };
+
+function agregarLetra(){
+	var letra = l.value;
+	l.value = "";
+	mostrarPalabra(palabra, hombre, letra);
+}
+
+function mostrarPalabra(palabra, ahorcado, letra){
+	var encontrado = false;
+	var p;
+	letra = letra.toUpperCase();
+
+	for (p in palabra){
+		if(letra == palabra[p]){
+			espacio[p] = letra;
+			encontrado = true;
+		}
+	}
+	mostrarPista(espacio);
+
+	// Si no lo encontré
+
+	if(!encontrado){
+		ahorcado.trazar();
+	}
+
+	if(!ahorcado.vivo){
+		// Mostrar la palabra entera
+	}
+}
+
+function mostrarPista(espacio){
+	var pista = document.getElementById("pista");
+	var texto = "";
+	var i;
+	var largo = espacio.length;
+
+	for ( i = 0; i<largo; i++){
+
+		if (espacio[i] != undefined) 
+		{
+			texto = texto + espacio[i] + " ";
+		}else{
+			texto += "_ ";
+		};
+	}
+
+	pista.textContent = texto;
+
+}
